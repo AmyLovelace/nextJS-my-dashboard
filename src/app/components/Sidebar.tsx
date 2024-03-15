@@ -1,6 +1,6 @@
 
 import Image from 'next/image'
-import { IoLogoReact, IoBrowsersOutline, IoCalculator } from 'react-icons/io5'
+import { IoLogoReact, IoBrowsersOutline, IoCalculator ,IoSkull} from 'react-icons/io5'
 import { SidebarMenuItem } from './SidebarMenuItem'
 
 
@@ -16,6 +16,12 @@ const menuItems = [
         icon: <IoCalculator size={40} />,
         title: 'Counter',
         subtitle: 'Contador Client Side'
+    },
+    {
+        path: '/dashboard/movies',
+        icon: <IoSkull size={40} />,
+        title: 'Movies',
+        subtitle: 'Generador de Movies'
     }
 ]
 export const Sidebar = () => {
@@ -23,7 +29,7 @@ export const Sidebar = () => {
         <div id="menu" style={{ width: '500px' }} className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0 h-screen overflow-y-scroll">
             <div id="logo" className="my-4 px-6">
                 <h1 className="flex items-center text-lg md:text-2xl font-bold text-white">
-                    <span className='mr-2'><IoLogoReact /></span>
+                    <span className='mr-2'><IoLogoReact/></span>
                     <span>MyCounter</span>
                     <span className="text-blue-500">Dashboard</span>
                 </h1>
