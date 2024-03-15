@@ -58,19 +58,19 @@ export default async function MoviesPage() {
         ></Image>
       </span>
       <span>
-        rank:{movie.rank}
+        Ranking: {movie.rank}
       </span>
       <span>
-        {movie.title}
+        Titulo: {movie.title}
       </span>
       <span>
-        {movie.description}
+        Descripción: {movie.description}
       </span>
       <span>
-        {movie.director}
+        Director: {movie.director}
       </span>
       <span>
-        {movie.genre}
+        Genero: {movie.genre}
       </span>
      
       
