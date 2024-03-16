@@ -41,10 +41,11 @@ const getMovie = async (id: string): Promise<Movie> => {
 export default async function MoviesPage() {
   const movies = await getMovies();
 
-  const movie = await getMovie('20');
+  //const movie = await getMovie('20');
 
   return (
     <div className="flex flex-col">
+      <span className="text-5xl my-2">Movie ranking list <small>Static</small></span>
       <div className="flex flex-wrap gap-10 items-center justify-center">
         {movies.map((movie, index) => (
           <div key={movie.rank} className="flex flex-col items-center w-56">
@@ -60,11 +61,11 @@ export default async function MoviesPage() {
             <p>{movie.director}</p>
             <p>{movie.description}</p>
             <p>{movie.genre}</p>
-            
+
           </div>
         ))}
       </div>
-      
+
 
     </div>
   );
