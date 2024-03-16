@@ -44,10 +44,12 @@ export default async function MoviesPage() {
   const movie = await getMovie('20');
 
   return (
-    <div style={{ width: '500px' }} className="flex flex-col">
+    <div style={{ width: '250px' }} className="flex flex-col items-center justify-center">
     {movies.map((movie, index) => (
       <div key={index} className="movie-card">
         <Image
+        key={movie.rank}
+        className="flex items-center"
           src={movie.image}
           alt={`Imagen de ${movie.title}`}
           width={100}
