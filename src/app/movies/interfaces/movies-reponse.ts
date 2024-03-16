@@ -1,7 +1,7 @@
 
 
 
-export interface MovieResponse {
+export interface Movie{
     rank: number;
     title: string;
     description?: string;
@@ -16,3 +16,4 @@ export interface MovieResponse {
     imdb_link?: string;
     director?: string;
    }
+   export type MovieResponse = Movie[]
