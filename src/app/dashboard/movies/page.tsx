@@ -21,7 +21,7 @@ const getMovies = async (): Promise<Movie[]> => {
     year: movie.year,
   }));
 
-  throw new Error('this is an error that should not be thrown')
+  //throw new Error('this is an error that should not be thrown')
 
 
 
