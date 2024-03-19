@@ -9,7 +9,7 @@ export function CartCounter({ value =10}:Props) {
     const [counter, setCounter] = useState(value);
 
   const pressBtnPlus = () => {
-    setCounter(counter + 1);
+    setCounter(counter);
     setCounter((count) => count + 1)
   }
   const pressBtnMinus = () => {

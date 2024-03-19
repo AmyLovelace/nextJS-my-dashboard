@@ -74,8 +74,6 @@ export default async function MoviePage({ params }: Props) {
               alt={`image of movie :${movie.title}`}
               className="mb-5"
             />
-
-
             <div className="flex flex-wrap text-2xl font-medium">
               {movie.title}
             </div>
@@ -100,7 +98,8 @@ export default async function MoviePage({ params }: Props) {
             </div>
             <Link 
             href={movie.imdb_link!}
-            className=" font-medium text-2xl text-navy-700 mt-3  hover:text-emerald-800 transition-all">
+            className=" font-medium text-2xl text-navy-700 mt-3   transition-all transition ease-in-out delay-150 text-emerald-600 hover:-translate-y-1 hover:scale-110 hover:text-emerald-800 duration-300"
+            >
              IMDb
             </Link >
           </div>

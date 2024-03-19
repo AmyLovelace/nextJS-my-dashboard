@@ -1,6 +1,6 @@
 
 import Image from 'next/image'
-import { IoLogoReact, IoBrowsersOutline, IoCalculator ,IoSkull} from 'react-icons/io5'
+import { IoLogoReact, IoBrowsersOutline, IoCalculator, IoVideocam} from 'react-icons/io5'
 import { SidebarMenuItem } from './SidebarMenuItem'
 
 
@@ -19,7 +19,7 @@ const menuItems = [
     },
     {
         path: '/dashboard/movies',
-        icon: <IoSkull size={40} />,
+        icon: <IoVideocam size={40} />,
         title: 'Movies',
         subtitle: 'Generador de Movies'
     }
