@@ -101,7 +101,7 @@ export default async function MoviePage({ params }: Props) {
             <Link 
             href={movie.imdb_link!}
             className=" font-medium text-2xl text-navy-700 mt-3  hover:text-emerald-800 transition-all">
-             Imbd
+             IMDb
             </Link >
           </div>
 
