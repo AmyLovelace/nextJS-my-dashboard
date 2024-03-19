@@ -31,40 +31,36 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 
 const getMovie = async (rank: string): Promise<Movie> => {
-
-
   try {
-    const response: Movie = await fetch(`https://imdb-top-100-movies.p.rapidapi.com/top${rank}`, {
-      headers: {
-        'X-RapidAPI-Key': 'ebdcabf4abmsh4836fcef0ccb747p119624jsn93a81e1f6fdc',
-        'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
-      }, cache: 'force-cache'//TODO
-    })
-      .then(response => response.json())
-      .then(data => {
-        return {
-          rank: data.rank,
-          title: data.title,
-          year: data.year,
-          image: data.image,
-          genre: data.genre,
-          description: data.description,
-          thumbnail: data.thumbnail,
-          big_image: data.big_image,
-          imdb_link: data.imdb_link
-        };
-      });
-
-    return response;
-
+     const response = await fetch(`https://imdb-top-100-movies.p.rapidapi.com/top${rank}`, {
+       headers: {
+         'X-RapidAPI-Key': 'ebdcabf4abmsh4836fcef0ccb747p119624jsn93a81e1f6fdc',
+         'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+       },
+       cache: 'force-cache'
+     });
+ 
+     if (!response.ok) {
+       throw new Error(`HTTP error! status: ${response.status}`);
+     }
+ 
+     const data = await response.json();
+     return {
+       rank: data.rank,
+       title: data.title,
+       year: data.year,
+       image: data.image,
+       genre: data.genre,
+       description: data.description,
+       thumbnail: data.thumbnail,
+       big_image: data.big_image,
+       imdb_link: data.imdb_link
+     };
   } catch (error) {
-    notFound()
-
+     notFound();
   }
-
-
-
-}
+ };
+ 
 
 
 
