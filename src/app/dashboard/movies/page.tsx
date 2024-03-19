@@ -1,7 +1,5 @@
-import { Movie } from "@/app/movies/interfaces/movies-reponse";
-import Image from 'next/image'
-import MovieCard from "./components/MovieCard";
-import MovieGrid from "./components/MovieGrid";
+import { Movie } from "@/movies/interfaces/movies-reponse";
+import MovieGrid from "../../../movies/components/MovieGrid";
 
 const getMovies = async (): Promise<Movie[]> => {
   const response = await fetch('https://imdb-top-100-movies.p.rapidapi.com/', {
@@ -60,13 +58,11 @@ export default async function MoviesPage() {
   //const movie = await getMovie('20');
 
   return (
-    <>
+  
     <div className="flex flex-col">
       <span className="text-5xl my-2">Movie ranking list <small>Static</small></span>
-      <div className="flex flex-wrap gap-10 items-center justify-center">
       <MovieGrid movie={movies}/>
       </div>
-    </div>
-    </>
+    
   );
 }

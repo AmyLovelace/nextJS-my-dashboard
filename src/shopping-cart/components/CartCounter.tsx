@@ -23,8 +23,8 @@ export function CartCounter({ value =10}:Props) {
 
             <div className="flex">
                 <button
-                    className="flex items-center  justify-center p-2 rounded-xl bg-gray-900 text-white hover:bg-gray-600 transition-all w-[100px] mr-2"
-                    onClick={pressBtnPlus}>
+          className="flex items-center justify-center p-2 rounded-xl bg-gray-900 text-white hover:bg-gray-600 transition-all w-[100px] mr-2"
+          onClick={pressBtnPlus}>
                     +1
                 </button>
                 <button className="flex items-center  justify-center p-2 rounded-xl bg-gray-900 text-white hover:bg-gray-600 transition-all w-[100px] mr-2"

@@ -1,4 +1,4 @@
-import { Movie } from "@/app/movies/interfaces/movies-reponse"
+import { Movie } from "@/movies/interfaces/movies-reponse"
 import Image from 'next/image'
 import MovieCard from "./MovieCard"
 import { Key } from "react"
@@ -17,6 +17,5 @@ const MovieGrid = ({ movie }: Props) => {
             }
         </div>
     )
-}
-
+}     
 export default MovieGrid
