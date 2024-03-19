@@ -1,4 +1,4 @@
-import { Movie } from "@/movies/interfaces/movies-reponse"
+import { Movie } from "@/app/movies/interfaces/movies-reponse"
 import Link from "next/link"
 import Image from 'next/image'
 import { IoHeartOutline } from "react-icons/io5"
@@ -25,9 +25,10 @@ const MovieCard = ({ movie }: Props) => {
                     <p className="pt-2 text-lg font-semibold text-gray-50 capitalize">{movie.title}</p>
                     <p className="text-sm text-gray-100">{movie.year}</p>
                     <div className="mt-5">
+                       
                         <Link
                             className="border rounded-full py-2 px-4 text-xs font-semibold text-gray-100"
-                            href={`movie/${movie.rank}`}
+                            href={`movie/${movie.title}`}
                         >
                             Know more
                         </Link>

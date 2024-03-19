@@ -1,4 +1,4 @@
-import {CartCounter} from '@/shopping-cart'
+import {CartCounter} from '@/app/shopping-cart'
 
 export default function CounterPage() {
 

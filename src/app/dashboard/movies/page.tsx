@@ -1,5 +1,5 @@
-import { Movie } from "@/movies/interfaces/movies-reponse";
-import MovieGrid from "../../../movies/components/MovieGrid";
+import { Movie } from "@/app/movies/interfaces/movies-reponse";
+import MovieGrid from "../../movies/components/MovieGrid";
 
 const getMovies = async (): Promise<Movie[]> => {
   const response = await fetch('https://imdb-top-100-movies.p.rapidapi.com/', {
