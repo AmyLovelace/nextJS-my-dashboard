@@ -2,6 +2,7 @@ import { Movie } from "@/app/movies/interfaces/movies-reponse";
 import { Metadata } from "next";
 import Image from 'next/image'
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 
 interface Props {
@@ -10,41 +11,56 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
-  const { title, description } = await getMovie(params.rank)
+  try {
+    const { title } = await getMovie(params.rank)
 
-  return {
-    title: title,
-    description: `page of ${title}`,
+    return {
+      title: title,
+      description: `page of ${title}`,
+    }
+
+  } catch (error) {
+    return {
+      title: "Movie Page",
+      description: "Movie information",
+    }
+
   }
+
 }
 
 
 const getMovie = async (rank: string): Promise<Movie> => {
-  const response: Movie = await fetch(`https://imdb-top-100-movies.p.rapidapi.com/top${rank}`, {
-    headers: {
-      'X-RapidAPI-Key': 'ebdcabf4abmsh4836fcef0ccb747p119624jsn93a81e1f6fdc',
-      'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
-    }, cache: 'force-cache'//TODO
-  })
-    .then(response => response.json())
-    .then(data => {
-      return {
-        rank: data.rank,
-        title: data.title,
-        year: data.year,
-        image: data.image,
-        genre: data.genre,
-        description: data.description,
-        thumbnail: data.thumbnail,
-        big_image: data.big_image,
-        imdb_link: data.imdb_link
-      };
-    });
-
-  //console.log(response)
-  return response;
 
 
+  try {
+    const response: Movie = await fetch(`https://imdb-top-100-movies.p.rapidapi.com/top${rank}`, {
+      headers: {
+        'X-RapidAPI-Key': 'ebdcabf4abmsh4836fcef0ccb747p119624jsn93a81e1f6fdc',
+        'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+      }, cache: 'force-cache'//TODO
+    })
+      .then(response => response.json())
+      .then(data => {
+        return {
+          rank: data.rank,
+          title: data.title,
+          year: data.year,
+          image: data.image,
+          genre: data.genre,
+          description: data.description,
+          thumbnail: data.thumbnail,
+          big_image: data.big_image,
+          imdb_link: data.imdb_link
+        };
+      });
+
+    return response;
+
+  } catch (error) {
+    notFound()
+
+  }
 
 
 
@@ -83,24 +99,24 @@ export default async function MoviePage({ params }: Props) {
 
           <div className="flex flex-col items-start rounded-2xl bg-white bg-clip-border px-3 py-5  drop-shadow-lg ">
             <div className="flex flex-wrap mb-3 mt-4">
-            <p className=" text-md text-black font-medium mr-1 ">{'Genre:'}</p>
-            {
-              movie.genre.map((genre, index, array) => (
-                <p key={genre} className="mr-1 capitalize">
-                  {genre}
-                  {index < array.length - 1 ? ', ' : ''}
-                </p>
-              ))
-            }
+              <p className=" text-md text-black font-medium mr-1 ">{'Genre:'}</p>
+              {
+                movie.genre.map((genre, index, array) => (
+                  <p key={genre} className="mr-1 capitalize">
+                    {genre}
+                    {index < array.length - 1 ? ', ' : ''}
+                  </p>
+                ))
+              }
             </div>
             <div className="text-base font-medium text-navy-700 flex">
               {`Movie Rank: #${movie.rank}`}
             </div>
-            <Link 
-            href={movie.imdb_link!}
-            className=" font-medium text-2xl text-navy-700 mt-3   transition-all ease-in-out delay-150 text-emerald-600 hover:-translate-y-1 hover:scale-110 hover:text-emerald-800 duration-300"
+            <Link
+              href={movie.imdb_link!}
+              className=" font-medium text-2xl text-navy-700 mt-3   transition-all ease-in-out delay-150 text-emerald-600 hover:-translate-y-1 hover:scale-110 hover:text-emerald-800 duration-300"
             >
-             IMDb
+              IMDb
             </Link >
           </div>
 
