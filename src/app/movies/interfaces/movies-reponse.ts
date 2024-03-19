@@ -2,15 +2,20 @@
 
 
 export interface Movie{
-    
-    rank: number;
-    title: string;
+    rank:        number;
+    title:       string;
     description: string;
-    image: string;
-    genre: string[];
-    year: number;
-    director: string;
+    image:       string;
+    big_image?:   string;
+    genre:       string[];
+    thumbnail?:   string;
+    rating?:      string;
+    id?:          string;
+    year:        number;
+    imdbid?:      string;
+    imdb_link?:   string;
    }
   
     
     
+   
