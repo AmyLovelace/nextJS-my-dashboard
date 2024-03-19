@@ -8,6 +8,21 @@ import { notFound } from "next/navigation";
 interface Props {
   params: { rank: string };
 }
+// en build 
+export async function generateStaticParams(){
+
+  // crea un arreglo con largo de 100 donde se mapea el value y al indice se le suma 1 para evitar el value 0
+  const static100Movies = Array.from({length:100}).map((v,i)=>{
+    `${i + 1}`
+  });
+
+
+  return static100Movies.map(rank =>({
+    rank: rank
+  }))
+
+}
+
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
@@ -37,7 +52,10 @@ const getMovie = async (rank: string): Promise<Movie> => {
          'X-RapidAPI-Key': 'ebdcabf4abmsh4836fcef0ccb747p119624jsn93a81e1f6fdc',
          'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
        },
-       cache: 'force-cache'
+       //cache: 'force-cache',
+       next:{
+        revalidate:60 * 60 * 30 * 6
+       }
      });
  
      if (!response.ok) {
