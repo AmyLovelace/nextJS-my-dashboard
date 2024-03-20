@@ -17,9 +17,9 @@ export async function generateStaticParams(){
   });
 
 
-  return static100Movies.map(rank =>({
-    rank: rank
-  }))
+  return static100Movies.map(rank =>{
+    rank:rank
+  })
 
 }
 
@@ -49,10 +49,9 @@ const getMovie = async (rank: string): Promise<Movie> => {
   try {
      const response = await fetch(`https://imdb-top-100-movies.p.rapidapi.com/top${rank}`, {
        headers: {
-         'X-RapidAPI-Key': 'ebdcabf4abmsh4836fcef0ccb747p119624jsn93a81e1f6fdc',
+         'X-RapidAPI-Key': '5161d5c18bmshc52952c78da8284p133093jsn9ea80365e627',
          'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
        },
-       //cache: 'force-cache',
        next:{
         revalidate:60 * 60 * 30 * 6
        }
